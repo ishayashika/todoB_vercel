@@ -6,7 +6,7 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import allRoutes from "./routes/main.js"
 const app = express();
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 8000;
 
 
 app.get('/', (req, res) => {
@@ -39,7 +39,8 @@ app.use((err, _req, res, next) => {
 
 mongoose.set('strictQuery', false);
 
-mongoose.connect(process.env.DB_LOCALHOST_CONN).then(res=>{
+mongoose.connect(process.env.MONGO_URI)
+.then(res=>{
   console.log("Connected to MongoDB successfully")
 }).catch(err=>{
   console.log("Error connecting to MongoDB",err);

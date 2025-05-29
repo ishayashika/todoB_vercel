@@ -16,8 +16,14 @@ app.get('/', (req, res) => {
 /* Middleware */
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://localhost:5174', 'http://127.0.0.1:5173', 'http://127.0.0.1:5174'],
-  credentials: true // This is important for cookies
+  origin: [
+    'http://localhost:5173',
+    'http://localhost:5174',
+    'http://127.0.0.1:5173',
+    'http://127.0.0.1:5174',
+    'https://your-render-frontend-url.onrender.com' // Add your frontend URL
+  ],
+  credentials: true
 })); //helps us to share our info between clients
 app.use(morgan('tiny')); //whenever we hit any kind of route it will actually login our terminal
 app.use(cookieParser()); 
